@@ -138,7 +138,7 @@ def update_record(domain, value, record_type="A"):
     else:  # create
         # https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record
         res = request('POST', '/' + zoneid + '/dns_records',
-                      type=record_type, name=domain, content=value, proxied=False, ttl=600)
+                      type=record_type, name=domain, content=value, proxied=False, ttl=120)
         if res:
             get_records.records[cache_key][res['id']] = res
             result = res
